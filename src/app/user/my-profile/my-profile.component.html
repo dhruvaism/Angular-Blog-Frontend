@@ -1,0 +1,282 @@
+<header class="masthead masthead-page mb-5">
+  <div class="container">
+    <div class="d-flex flex-column justify-content-center align-items-center text-center">
+    <h1 class="mb-2 mt-4">Blog4Post</h1>
+    <h2 class="mb-4">A simple, unstyled, blog post starter to create a blog post</h2>
+    </div>  
+    </div>
+    <svg style="pointer-events: none" class="wave" width="100%" height="50px" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 75">
+        <defs>
+        <style>
+                .a {
+                  fill: none;
+                }
+        
+                .b {
+                  clip-path: url(#a);
+                }
+        
+                .c,
+                .d {
+                  fill: #f9f9fc;
+                }
+        
+                .d {
+                  opacity: 0.5;
+                  isolation: isolate;
+                }
+              </style>
+        <clipPath id="a">
+        <rect class="a" width="1920" height="75"></rect>
+        </clipPath>
+        </defs>
+        <title>wave</title>
+        <g class="b">
+        <path class="c" d="M1963,327H-105V65A2647.49,2647.49,0,0,1,431,19c217.7,3.5,239.6,30.8,470,36,297.3,6.7,367.5-36.2,642-28a2511.41,2511.41,0,0,1,420,48"></path>
+        </g>
+        <g class="b">
+        <path class="d" d="M-127,404H1963V44c-140.1-28-343.3-46.7-566,22-75.5,23.3-118.5,45.9-162,64-48.6,20.2-404.7,128-784,0C355.2,97.7,341.6,78.3,235,50,86.6,10.6-41.8,6.9-127,10"></path>
+        </g>
+        <g class="b">
+        <path class="d" d="M1979,462-155,446V106C251.8,20.2,576.6,15.9,805,30c167.4,10.3,322.3,32.9,680,56,207,13.4,378,20.3,494,24"></path>
+        </g>
+        <g class="b">
+        <path class="d" d="M1998,484H-243V100c445.8,26.8,794.2-4.1,1035-39,141-20.4,231.1-40.1,378-45,349.6-11.6,636.7,73.8,828,150"></path>
+        </g>
+        </svg>
+</header>
+
+<main>
+    <div class="container">
+        <div class="row">
+
+          <!-- USER SECTION  -->
+          <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12" >
+            <div class="right card border-0 shadow mb-4">
+                <div class="card_body">
+                    <div class="profile-cover" ></div>
+                    <div class="profile-image">
+                      <img class="user_image" src={{user.photoUrl}} alt="profile">
+                      <div class="edit" data-target="#uploadImage" data-toggle="modal">
+                        <span><i class=" m-2 fa fa-edit"></i></span>
+                      </div>
+                      <div class="modal" #modal id="uploadImage" tabindex="-1" role="dialog" aria-labelledby="uploadImageLabel" aria-hidden="true">
+                        <div class="modal-dialog  modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h4 class="modal-title">Upload profile image</h4>
+                              <button class="close" #closeBtn data-dismiss="modal" aria-label="Close">&times;</button>
+                            </div>
+                            <div class="modal-body d-flex flex-column">
+                                    <input style="display: none;" #fileInput type="file" (change)="onFileProfileSelected($event)" >
+                                    <button class="my-4 btn btn-outline-info" (click)="fileInput.click()">Pick Image</button>
+                                    <img class="preview_image"  *ngIf="selectedUrl" src={{selectedUrl}} alt="">
+                                    <div *ngIf="(0<progress)" class="text-center">
+                                      <div  style="height: 5px;" class="progress" >
+                                        <div class="progress-bar bg-success" role="progressbar" [style.width]="progress + '%'" [class.aria-valuenow]="progress" aria-valuemin="0" aria-valuemax="100"></div>
+                                      </div>
+                                      <p>{{progress+"%"}}</p>
+                                    </div>
+
+                                    <input [class.disabled]="!(progress===0)" class="mb-2 upload" (click)="onProfileUpload()" type="button" style="display: block;" class="btn btn-info" value="Upload">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <h5 class="pt-1 pb-0">{{user.fname+" "+user.lname}}<img class="ml-1" style="width: 20px;" src="/assets/img/blue_tick.png"></h5>
+                </div>
+                <div class="about">
+                  <p class="m-2" style="font-family: cursive; font-size: small; font-weight: 10;" >Something  About You...</p>
+                </div>
+              </div>
+              <div class="right card border-0 shadow mb-2">
+                
+                <h6 class="mx-4 mt-3 mb-0">Joined on</h6>
+                <hr class="mx-4 my-0">
+                <p class="mx-4 my-2"><i class="fa mr-1 fa-calendar-check-o"></i>{{user.created_at}}</p>
+
+                <h6 class="mx-4 mt-3 mb-0">From</h6>
+                <hr class="mx-4 my-0">
+                <p class="mx-4 my-2"><i class="fa mr-1 fa-location-arrow"></i>{{user.location}}</p>
+
+                    <h6 class="mx-4 mt-3 mb-0">Email</h6>
+                    <hr class="mx-4 my-0">
+                    <p class="mx-4 my-2"><i class="fa mr-1 fa-envelope-o"></i>{{user.email}}</p>
+
+                    <h6 class="mx-4 mt-3 mb-0">Date of Birth</h6>
+                    <hr class="mx-4 my-0">
+                    <p class="mx-4 my-2"><i class="fa mr-1 fa-birthday-cake"></i>{{user.dob}}</p>
+                    
+
+              </div>
+              <div class="right card border-0 shadow mb-4">
+                 <a class="mx-4 my-1"><i class="fa mx-1 fa-sign-out"></i>Log out</a>
+              </div>
+        </div>
+
+        <!-- Post SECTION  -->
+        <div class="col-lg-8 col-xl-8 col-md-12 col-sm-12">
+
+          <!-- CREATE POST  -->
+          <div class="card border-0 shadow mb-4">
+            <div class="card-body mb-0 pb-0">
+              <h5 class="mb-2" style="width: 100%;">Create New Post</h5>
+            <div class="form-group" [formGroup]="postForm" >
+                <div class="mb-3">
+                    <textarea placeholder="write something here..." class="form-control" formControlName="description" ></textarea>
+                </div>
+                <div>
+                   <div class="d-flex flex-row flex-wrap" style="width: 100%;">
+                    <div class="added-photo" *ngFor="let f of files">
+                        <div *ngIf="f.progress!=100" class="layer"></div>
+                        <img src={{f.localUrl}} alt="">
+                        <h2 *ngIf="f.progress!=100" class="progress">{{f.progress+"%"}}</h2>
+
+                    </div>
+                    <input style="display: none;" #fileInputt type="file" (change)="onFileSelected($event)">
+                    <div *ngIf="!files || (files && files.length<=3)" class="add-photo" (click)="fileInputt.click()">
+                        <i class="fa fa-plus-square"></i>
+                    </div>
+                   </div>
+                   
+                </div>
+                <hr class="mb-3">
+                <div class="d-flex flex-row">
+                    <input type="reset" class="btn btn-outline-danger mr-2" (click)="cancelPost()" value="Cancel">
+                    <input type="submit" class="btn btn-info" (click)="createPost()" [class.disabled]="!postForm.valid" value="Post">
+                </div>
+
+            </div>
+            </div>
+
+        </div>
+
+          <!-- ALREADY POSTED  -->
+          <div class="card border-0 shadow mb-4" *ngFor = "let b of blogs">
+            <div class="card-body">
+                <div class="header-part">
+                     <img src={{b.photoUrl}} alt="user_profile">
+                     <div class="heading-1">
+                        <h5 class="mb-0 user_name"> {{b.fname + " " + b.lname}}<img class="ml-1" style="width: 18px; height: 18px;" src="/assets/img/blue_tick.png"></h5>
+                        <p>{{'Posted '+ b.created_at}}</p>
+                     </div>
+                </div>
+            <hr>
+            <ul class="mb-0">
+           <li>
+            <p class="mx-1">{{b.description}}</p>
+           </li>
+           <li>
+             <div class="image-place">
+                  <!-- if 4 images are there  -->
+                  <div *ngIf="b.imageCount==4" class="images-4">
+                      <div class="d-flex flex-row justify-content-around" > 
+                        <img src={{b.image_1}} class="img-1 img-fluid" alt="">
+                        <img src={{b.image_2}} class="img-2 img-fluid" alt="">
+                      </div>
+                      <div class="d-flex flex-row justify-content-around">
+                        <img src={{b.image_3}} class="img-3 img-fluid" alt="">
+                        <img src={{b.image_4}} class="img-4 img-fluid" alt="">
+                      </div>
+
+                  </div>
+                   <!-- if 3 images are there  -->
+                   <div *ngIf="b.imageCount==3" class="images-3">
+                    <div class="d-flex flex-row justify-content-around" > 
+                      <img src={{b.image_1}} class="img-1 img-fluid" alt="">
+                      <img src={{b.image_2}} class="img-2 img-fluid" alt="">
+                    </div>
+                    <div class="d-flex flex-row justify-content-around">
+                      <img src={{b.image_3}} class="img-3 img-fluid" alt="">
+                    </div>
+
+                </div>
+                  <!-- if 2 images are there  -->
+                  <div *ngIf="b.imageCount==2" class="images-2">
+                    <div class="d-flex flex-row justify-content-around" > 
+                      <img src={{b.image_1}} class="img-1 img-fluid" alt="">
+                    </div>
+                    <div class="d-flex flex-row justify-content-around">
+                      <img src={{b.image_2}} class="img-2 img-fluid" alt="">
+                    </div>
+
+                </div>
+                 <!-- if 1 images are there  -->
+                 <div *ngIf="b.imageCount==1" class="images-1">
+                  <div class="d-flex flex-row justify-content-around" > 
+                    <img src={{b.image_1}} class="img-1 img-fluid" alt="">
+                  </div>
+
+              </div>
+             </div>
+           </li>
+            </ul>
+            <hr>
+            <div class="dropdown text-right">
+              <h5 >Comments</h5>
+              <a class="mr-4" style="display: inline;" *ngIf="b.likeStatus===-1" >{{b.likes?.length || 0}}<i class="ml-1 fa fa-heart-o"></i></a>
+               
+              <a class="mr-4" style="display: inline;" 
+                (click)="updateLikeCount(b.id)"
+                 *ngIf="b.likeStatus===0" >
+                 {{b.likes?.length || 0}}
+                 <i class="ml-1 fa fa-heart-o"></i>
+                </a>
+                
+                <a class="mr-4" style="display: inline;" (click)="updateLikeCount(b.id)" *ngIf="b.likeStatus===1" >{{b.likes?.length||0}}<i class="ml-1 fa fa-heart"></i></a>
+                <a class="dropdown-toggle" data-toggle="dropdown"  style="display: inline;" aria-expanded="false" class="mr-4">{{b.comments?.length}}<i class="ml-1 fa fa-comment-o"></i></a>
+
+              
+              <div id="comment_dropdown" class="comment-dropdown">
+               <div class="comment-item" *ngFor="let c of b.comments">
+                 <div class="d-flex flex-row">
+                  <div class="d-flex flex-column align-items-center">
+                    <img src={{c.photoUrl}} alt="" width="34px" height="34px">
+                  <div class="side-bar"><span></span></div>
+                  </div>
+                  <div class="ml-2">
+                    <h6 class="m-0">{{c.fname+" "+c.lname}} <img class="ml-1" style="width: 14px; height: 14px;" src="/assets/img/blue_tick.png"></h6>
+                    <p class="desc mt-1" style="width: fit-content;">{{c.comment}}</p>
+                  </div>
+                 </div>
+              </div>
+              <div class="comment-item">
+                <div class="d-flex flex-row">
+                 <div class="d-flex flex-column align-items-center">
+                   <img *ngIf="user" src={{user.photoUrl}} alt="" width="34px" height="34px">
+                   <img *ngIf="!user" src="/assets/img/user_default.jpg" alt="" width="34px" height="34px">
+
+                 </div>
+                 <div class="ml-2" *ngIf="user">
+                   <h6 class="m-0">{{user?.fname + " " +user?.lname}}<img class="ml-1" style="width: 14px; height: 14px;" src="/assets/img/blue_tick.png"></h6>
+                   <form class="form-inline mt-2" [formGroup]="commentForm" (ngSubmit)="commentForm.valid && onSubmit(b.id)">
+                     <input type="text" class="form-control" placeholder="write..." formControlName="comment">
+                     <input type="submit" class="ml-2 btn btn-outline-info" [disabled]="!commentForm.valid" value="Send">
+                   </form>
+                 </div>
+                 <div class="ml-2" *ngIf="!user">
+                   <input type="button" class="btn btn-outline-info" routerLink="user/login" value="Login to comment">
+                 </div>
+                </div>
+             </div>
+              </div>
+            </div>
+
+            </div>
+            </div>
+              <!-- PAGINATION  -->
+              <div class="pagination d-flex flex-row justify-content-between" *ngIf="!blogs || !(blogs && blogs.length < 10 && start==0)">
+                <a class="btn btn-outline-info" 
+                   [class.disabled]="start==0"
+                   (click)="getAllBlogbyUser(start-10)"><i class="fa mr-1 fa-angle-double-left "></i>Prev</a>
+                <a class="btn btn-outline-info" 
+                   [class.disabled]="blogs && blogs.length<10"
+                   (click)="getAllBlogbyUser(start+10)"
+                   >Next<i class="fa ml-1 fa-angle-double-right"></i></a>
+              </div>    
+      </div>
+       
+        </div>
+    </div>
+</main>

@@ -1,0 +1,78 @@
+<div class="register">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-12">
+                <div class="left">
+                   <img src="/assets/img/register_banner.png" alt="register_banner" class="img-fluid">
+                </div>
+            </div>
+            
+            <div class="col-xl-6 col-lg-6 col-md-12">
+                <div class="right">
+                    <img src="/assets/img/prof.jpg" alt="" width="65px" height="65px">
+                    <div class="d-flex flex-column text-center">
+                        <div class="d-flex flex-row justify-content-around">
+                            <a  class="first" routerLink="../register">Register</a>
+                            <a  class="second" routerLink="../login">Login</a>
+                        </div>
+                       <div class="right-body">
+                        <h3 class="pb-5">Create your new Account</h3>
+                        <form class="form-group text-left mx-2" [formGroup]="form" (ngSubmit)="form.valid && onSubmit()">
+                            <div class="d-flex flex-row mb-3" style="width: 100%;" >
+                                <div>
+                                    <label for="fname">First name *</label>
+                                    <input type="text" name="fname" class="form-control" formControlName="fname" [ngClass]="{'is-invalid': 
+                                    form.get('fname').touched && form.get('fname').invalid}" >
+                                    <div class="invalid-feedback">
+                                        <div>First Name is Required</div>
+                                    </div>
+                                </div>
+                                <div class="ml-3">
+                                    <label for="lname">Last name *</label>
+                                    <input type="text" name="lname" class="form-control" formControlName="lname" [ngClass]="{'is-invalid': 
+                                    form.get('lname').touched && form.get('lname').invalid}">
+                                    <div class="invalid-feedback">
+                                        <div>Last Name is Required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email">Email *</label>
+                                <input type="email" name="email" class="form-control" formControlName="email" [ngClass]="{'is-invalid': 
+                                form.get('email').touched && form.get('email').invalid}">
+                                <div class="invalid-feedback" *ngIf="form.get('email').touched && form.get('email').invalid">
+                                    <div *ngIf="form.get('email').errors.required">Email is Required</div>
+                                    <div *ngIf="form.get('email').errors.email">Email must be a valid email Address</div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="dob">Date Of Birth *</label>
+                                <input type="date" name="dob" class="form-control" formControlName="dob" [ngClass]="{'is-invalid': 
+                                form.get('dob').touched && form.get('dob').invalid}">
+                                <div class="invalid-feedback">
+                                    <div>DOB is Required</div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password">Password *</label>
+                                <input type="password" name="password" class="form-control" formControlName="password" [ngClass]="{'is-invalid': 
+                                form.get('password').touched && form.get('password').invalid}">
+                                <div class="invalid-feedback" *ngIf=" form.get('password').touched && form.get('password').invalid">
+                                    <div *ngIf="form.get('password').errors.required">Password is Required</div>
+                                    <div *ngIf="form.get('password').errors.minlength">Password must be 6 digit charracter</div>
+                                </div>
+                            </div>
+                            <div class="text-center d-block" style="color: red;" *ngIf="response && !response.success">
+                                <span style="color: red;"></span>{{response.errors}}
+                            </div>
+                            <input type="submit" class="btn btn-info form-control mt-3" [disabled]="!form.valid" value="Sign Up">
+                        </form>
+                       </div>
+                    </div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>

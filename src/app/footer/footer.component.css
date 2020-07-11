@@ -1,0 +1,17 @@
+
+.footer_box {
+    background-image: linear-gradient(180deg, #89c6ee 0%, #8fabca 100%);
+}
+
+.footer_margin > a {
+    display: block;
+    font-weight: 400;
+    font-size: medium;
+    padding-bottom: .4rem;
+}
+
+.footer_title {
+    font-weight: 300;
+    font-size: larger;
+    padding: 1rem 0;
+}

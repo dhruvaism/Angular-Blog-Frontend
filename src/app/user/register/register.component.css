@@ -1,0 +1,49 @@
+.register {
+    background-color: lightgray;
+}
+
+.left {
+    margin: 2rem 5rem;
+}
+
+.left img {
+    padding: 10rem 4rem 4rem 4rem;
+}
+
+.right {
+    margin: 2rem 10rem 2rem 2rem;
+    position: relative;
+}
+
+.right .right-body {
+    padding: 2rem;
+    background-color: white;
+}
+
+.right a {
+    width: 100%;
+   font-weight: 300;
+   font-size: 26px;
+   line-height: 32px;
+   padding: 1rem 0;
+}
+
+.right .first {
+    background-color: white;
+    color: #006fe6;
+}
+
+.right img {
+    position: absolute;
+    left: 50%;
+    margin-left: -25px;
+    border-radius: 50%;
+}
+
+@media only screen and (max-width: 1024px){
+    .right {
+        margin: 2rem 2rem 2rem 2rem;
+        position: relative;
+    }
+    
+}

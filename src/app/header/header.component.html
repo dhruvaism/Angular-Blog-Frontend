@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light sb-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+        <img src="favicon.ico" alt="Start Bootstrap Logo">
+        <span class="ml-1">Blog4Fun</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <div class="m-auto"></div>
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+            <a class="nav-link" style="cursor: pointer;" routerLink="" >
+                <i class="fa fa-home mr-1"></i>Home
+                </a>    
+        </li>
+    
+        <li class="nav-item dropdown" >
+          <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-user mr-1"></i>Profile
+          </a>
+          <div class="dropdown-menu py-4" aria-labelledby="navbarDropdownMenuLink">
+             <div *ngIf="!user">
+                 <a routerLink="user/login" class="login">LONGIN/SIGNUP</a>
+             </div>
+             <div *ngIf="user">
+                <strong  style="font-weight: 300;">Hello<span style="font-weight: 600;" class="mx-1" >{{user.fname}}</span></strong>
+                <hr class="my-2">
+                <a (click)="goToProfile()">My Profile</a>
+                <a>Edit Profile</a>
+                <a class="logout" (click)="logOut()">Log out</a>
+             </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    </div>
+  </nav>
